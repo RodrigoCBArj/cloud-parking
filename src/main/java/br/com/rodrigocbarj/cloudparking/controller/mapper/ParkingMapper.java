@@ -1,5 +1,6 @@
 package br.com.rodrigocbarj.cloudparking.controller.mapper;
 
+import br.com.rodrigocbarj.cloudparking.controller.dto.ParkingCreateDTO;
 import br.com.rodrigocbarj.cloudparking.controller.dto.ParkingDTO;
 import br.com.rodrigocbarj.cloudparking.model.Parking;
 import org.modelmapper.ModelMapper;
@@ -19,5 +20,13 @@ public class ParkingMapper {
 
     public List<ParkingDTO> toParkingDTOList(List<Parking> parkingList) {
         return parkingList.stream().map(this::toParkingDTO).collect(Collectors.toList());
+    }
+
+    public Parking toParking(ParkingDTO dto) {
+        return MODEL_MAPPER.map(dto, Parking.class);
+    }
+
+    public Parking toParkingByCreate(ParkingCreateDTO createDTO) {
+        return MODEL_MAPPER.map(createDTO, Parking.class);
     }
 }
