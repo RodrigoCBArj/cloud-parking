@@ -22,7 +22,11 @@ public class ParkingService {
     }
 
     private static Long getUUID() {
-        return (long) UUID.randomUUID().hashCode();
+        long id = UUID.randomUUID().hashCode();
+        while (id < 0) {
+            id = UUID.randomUUID().hashCode();
+        }
+        return id;
     }
 
     public List<Parking> findAll() {
