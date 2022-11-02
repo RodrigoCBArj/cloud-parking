@@ -2,15 +2,10 @@ package br.com.rodrigocbarj.cloudparking.service;
 
 import br.com.rodrigocbarj.cloudparking.exception.ParkingNotFoundException;
 import br.com.rodrigocbarj.cloudparking.model.Parking;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-import java.util.stream.Collectors;
+import java.util.*;
 
 @Service
 public class ParkingService {
@@ -27,11 +22,11 @@ public class ParkingService {
     }
 
     private static Long getUUID() {
-        return UUID.randomUUID().getMostSignificantBits();
+        return (long) UUID.randomUUID().hashCode();
     }
 
     public List<Parking> findAll() {
-        return parkingMap.values().stream().collect(Collectors.toList());
+        return new ArrayList<>(parkingMap.values());
     }
 
     public Parking findById(Long id) {
