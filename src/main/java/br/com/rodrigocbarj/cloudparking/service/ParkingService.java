@@ -48,4 +48,9 @@ public class ParkingService {
         parkingMap.put(id, parking);
         return parking;
     }
+
+    public void delete(Long id) {
+        findById(id); // se não existir esse id, não remove.
+        parkingMap.remove(id);
+    }
 }

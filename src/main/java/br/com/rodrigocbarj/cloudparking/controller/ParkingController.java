@@ -48,4 +48,11 @@ public class ParkingController {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(parkingMapper.toParkingDTO(newParking));
     }
+
+    @DeleteMapping("/{id}")
+    @ApiOperation("Delete by ID")
+    public ResponseEntity<Object> delete(@PathVariable Long id) {
+        parkingService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
