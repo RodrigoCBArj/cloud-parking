@@ -1,6 +1,8 @@
 package br.com.rodrigocbarj.cloudparking.service;
 
+import br.com.rodrigocbarj.cloudparking.exception.ParkingNotFoundException;
 import br.com.rodrigocbarj.cloudparking.model.Parking;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -33,7 +35,11 @@ public class ParkingService {
     }
 
     public Parking findById(Long id) {
-        return parkingMap.get(id);
+        Parking parking = parkingMap.get(id);
+
+        if (parking == null) throw new ParkingNotFoundException(id);
+
+        return parking;
     }
 
     public Parking create(Parking parking) {
