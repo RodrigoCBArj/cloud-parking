@@ -49,6 +49,16 @@ public class ParkingService {
         return parking;
     }
 
+    public Parking update(Long id, Parking parkingChanges) {
+        Parking parking = findById(id);
+        parking.setLicence(parkingChanges.getLicence());
+        parking.setState(parkingChanges.getState());
+        parking.setModel(parkingChanges.getModel());
+        parking.setColor(parkingChanges.getColor());
+        parkingMap.replace(id, parking);
+        return parking;
+    }
+
     public void delete(Long id) {
         findById(id); // se não existir esse id, não remove.
         parkingMap.remove(id);
