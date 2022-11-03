@@ -1,11 +1,14 @@
 package br.com.rodrigocbarj.cloudparking.controller;
 
+import br.com.rodrigocbarj.cloudparking.controller.dto.ParkingCreateDTO;
 import io.restassured.RestAssured;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ParkingControllerTest {
@@ -16,7 +19,6 @@ class ParkingControllerTest {
     @BeforeEach
     public void setUpTest() {
         RestAssured.port = randomPort;
-
     }
 
     @Test
@@ -25,8 +27,7 @@ class ParkingControllerTest {
                 .when()
                 .get("/parking")
                 .then()
-                .statusCode(200)
-                .body("license[0]", Matchers.equalTo("PMA-3213"));
+                .statusCode(HttpStatus.OK.value());
     }
 
     @Test
@@ -34,7 +35,22 @@ class ParkingControllerTest {
     }
 
     @Test
-    void create() {
+    void whenCreateThenCheckIfCreated() {
+        ParkingCreateDTO parking = new ParkingCreateDTO();
+        parking.setLicense("BMW-0235");
+        parking.setModel("BMW M235i");
+        parking.setColor("PURPLE");
+        parking.setState("PE");
+
+        RestAssured.given()
+                .when()
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .body(parking)
+                .post("/parking")
+                .then()
+                .statusCode(HttpStatus.CREATED.value())
+                .body("license", Matchers.equalTo("BMW-0235"))
+                .body("color", Matchers.equalTo("PURPLE"));
     }
 
     @Test
