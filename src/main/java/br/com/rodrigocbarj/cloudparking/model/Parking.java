@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class Parking {
 
     private Long id;
-    private String licence;
+    private String license;
     private String state;
     private String model;
     private String color;
@@ -21,9 +21,9 @@ public class Parking {
     private LocalDateTime exitDate;
     private Double bill;
 
-    public Parking(Long id, String licence, String state, String model, String color) {
+    public Parking(Long id, String license, String state, String model, String color) {
         this.id = id;
-        this.licence = licence;
+        this.license = license;
         this.state = state;
         this.model = model;
         this.color = color;

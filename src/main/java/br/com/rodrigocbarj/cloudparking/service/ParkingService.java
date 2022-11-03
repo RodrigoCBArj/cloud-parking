@@ -51,7 +51,7 @@ public class ParkingService {
 
     public Parking update(Long id, Parking parkingChanges) {
         Parking parking = findById(id);
-        parking.setLicence(parkingChanges.getLicence());
+        parking.setLicense(parkingChanges.getLicense());
         parking.setState(parkingChanges.getState());
         parking.setModel(parkingChanges.getModel());
         parking.setColor(parkingChanges.getColor());
