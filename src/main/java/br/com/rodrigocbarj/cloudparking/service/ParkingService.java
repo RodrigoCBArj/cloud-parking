@@ -14,11 +14,11 @@ public class ParkingService {
 
     static {
         var id = getUUID();
-        var id1 = getUUID();
+//        var id1 = getUUID();
         Parking parking = new Parking(id, "PMA-3213", "PE", "POLO", "PRETO");
-        Parking parking1 = new Parking(id1, "AMP-3123", "SP", "GOL", "BRANCO");
+//        Parking parking1 = new Parking(id1, "AMP-3123", "SP", "GOL", "BRANCO");
         parkingMap.put(id, parking);
-        parkingMap.put(id1, parking1);
+//        parkingMap.put(id1, parking1);
     }
 
     private static Long getUUID() {
