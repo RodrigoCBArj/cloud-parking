@@ -17,7 +17,7 @@ public class Parking {
     private String state;
     private String model;
     private String color;
-    private LocalDateTime entryDate;
+    private LocalDateTime entryDate = LocalDateTime.now();
     private LocalDateTime exitDate;
     private Double bill;
 

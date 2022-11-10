@@ -63,4 +63,12 @@ public class ParkingService {
         findById(id); // se não existir esse id, não remove.
         parkingMap.remove(id);
     }
+
+    public Parking exit(Long id) {
+        // TODO:
+        // pegar o estacionado
+        // atualizar data de saida
+        // calcular valor
+        return null;
+    }
 }
