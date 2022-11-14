@@ -4,14 +4,21 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class Parking {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String license;
     private String state;
@@ -21,8 +28,7 @@ public class Parking {
     private LocalDateTime exitDate;
     private Double bill;
 
-    public Parking(Long id, String license, String state, String model, String color) {
-        this.id = id;
+    public Parking(String license, String state, String model, String color) {
         this.license = license;
         this.state = state;
         this.model = model;
