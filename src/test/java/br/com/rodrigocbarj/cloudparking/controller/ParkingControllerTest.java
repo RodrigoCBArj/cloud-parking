@@ -1,5 +1,6 @@
 package br.com.rodrigocbarj.cloudparking.controller;
 
+import br.com.rodrigocbarj.cloudparking.config.AbstractDBContainer;
 import br.com.rodrigocbarj.cloudparking.controller.dto.ParkingCreateDTO;
 import io.restassured.RestAssured;
 import org.hamcrest.Matchers;
@@ -11,7 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class ParkingControllerTest {
+class ParkingControllerTest extends AbstractDBContainer {
 
     @LocalServerPort
     private int randomPort;
