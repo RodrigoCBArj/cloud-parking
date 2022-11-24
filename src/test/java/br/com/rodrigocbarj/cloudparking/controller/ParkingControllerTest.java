@@ -25,6 +25,7 @@ class ParkingControllerTest extends AbstractDBContainer {
     @Test
     void whenFindAllThenCheckResult() {
         RestAssured.given()
+                .auth().basic("user", "12345")
                 .when()
                 .get("/parking")
                 .then()
@@ -45,6 +46,7 @@ class ParkingControllerTest extends AbstractDBContainer {
 
         RestAssured.given()
                 .when()
+                .auth().basic("user", "12345")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(parking)
                 .post("/parking")
